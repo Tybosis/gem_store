@@ -1,15 +1,9 @@
+//= require_self
+//= require_tree ./gemstore
+
 (function() {
 
-  var app = angular.module('gemStore', ['templates', 'ngRoute','store-directives']);
-
-  app.config(function ($routeProvider, $locationProvider) {
-    $routeProvider
-        .when('/', {
-            templateUrl: 'index.html',
-            controller: 'StoreController'
-        }),
-    $locationProvider.html5Mode(true);
-  });
+  var app = angular.module('gemStore', ['store-directives']);
 
   app.controller('StoreController', ['$http', function($http){
     var store = this;
