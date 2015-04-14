@@ -16,3 +16,11 @@
 
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+
+.ng-invalid.ng-dirty {
+  border-color: red;
+}
+
+.ng-valid.nd-clean {
+  border-color: green;
+}
