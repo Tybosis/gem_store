@@ -8,7 +8,7 @@ class ListingCategoriesTest < ActionDispatch::IntegrationTest
   end
 
   test 'lists categories' do
-    get '/categories?category=common', {}, 'Accept' => 'application/json'
+    get '/api/categories?category=common', {}, 'Accept' => 'application/json'
 
     assert_equal 200, response.status
     assert_equal Mime::JSON, response.content_type

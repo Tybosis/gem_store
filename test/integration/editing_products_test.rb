@@ -3,7 +3,7 @@ require 'test_helper'
 class EditingProductsTest < ActionDispatch::IntegrationTest
   test 'editing an existing product' do
     @product = Product.create!(name: 'new product')
-    patch "/products/#{@product.id}", { product: { name: 'hello world' } },
+    patch "/api/products/#{@product.id}", { product: { name: 'hello world' } },
           { 'Accept' => 'application/json',
             'Content_type' => 'application/json' }
     assert_equal 200, response.status
@@ -12,7 +12,7 @@ class EditingProductsTest < ActionDispatch::IntegrationTest
 
   test 'editing a product with no name should return an error' do
     @product = Product.create!(name: 'happy')
-    patch "/products/#{@product.id}", { product: {name: ''} },
+    patch "/api/products/#{@product.id}", { product: {name: ''} },
           { 'Accept' => 'application/json',
             'Content_type' => 'application/json' }
     assert_equal 422, response.status
