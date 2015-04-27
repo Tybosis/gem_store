@@ -3,7 +3,7 @@ require 'test_helper'
 class ListingProductsTest < ActionDispatch::IntegrationTest
   setup do
     descrip = 'A ruby is a pink to blood-red colored gemstone, a variety of the mineral corundum'
-    Product.create!(name: 'Ruby', description: descrip,
+    Product.create!(name: 'Silver', description: descrip,
                     shine: 10, color: '#FF0000', price: 5_000)
     Product.create!(name: 'Sapphire',
                     description: 'typically blue gemstone variety of the mineral corundum, an aluminium oxide',

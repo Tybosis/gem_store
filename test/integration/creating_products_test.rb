@@ -15,12 +15,26 @@ class CreatingProductsTest < ActionDispatch::IntegrationTest
     assert_equal 'new gem', product[:name]
   end
 
-  test 'does not create product without a name' do
+  test 'does not create product without a name that is at least five characters' do
     post '/api/products',
          { product:
            {
-             name: nil,
+             name: 'yo',
              price: 1000
+           }
+         }.to_json,
+         { 'Accept' => 'application/json',
+           'Content-Type' => 'application/json' }
+
+    assert_equal 422, response.status
+  end
+
+  test 'does not create a product without a price' do
+    post '/api/products',
+         { product:
+           {
+             name: 'amethyst',
+             price: nil
            }
          }.to_json,
          { 'Accept' => 'application/json',

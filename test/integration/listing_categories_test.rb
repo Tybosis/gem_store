@@ -2,8 +2,8 @@ require 'test_helper'
 
 class ListingCategoriesTest < ActionDispatch::IntegrationTest
   setup do
-    Product.create!(name: 'Gem', description: 'Oooh shiny!', category: 'rare')
-    Product.create!(name: 'Obsidian', description: 'It\'s like glass yo!',
+    Product.create!(name: 'Gemstone', price: 100, description: 'Oooh shiny!', category: 'rare')
+    Product.create!(name: 'Obsidian', price: 10_000, description: 'It\'s like glass yo!',
                     category: 'common')
   end
 
