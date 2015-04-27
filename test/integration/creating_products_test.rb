@@ -5,8 +5,8 @@ class CreatingProductsTest < ActionDispatch::IntegrationTest
     post '/api/products',
          { product: { name: 'new gem', description: 'just a gem', price: 2_000,
                       color: '#FFF666', shine: 3 } }.to_json,
-         { 'Accept' => 'application/json',
-           'Content-Type' => 'application/json' }
+         'Accept' => 'application/json',
+         'Content-Type' => 'application/json'
 
     assert_equal 201, response.status
     assert_equal Mime::JSON, response.content_type
@@ -23,8 +23,8 @@ class CreatingProductsTest < ActionDispatch::IntegrationTest
              price: 1000
            }
          }.to_json,
-         { 'Accept' => 'application/json',
-           'Content-Type' => 'application/json' }
+         'Accept' => 'application/json',
+         'Content-Type' => 'application/json'
 
     assert_equal 422, response.status
   end
@@ -37,8 +37,8 @@ class CreatingProductsTest < ActionDispatch::IntegrationTest
              price: nil
            }
          }.to_json,
-         { 'Accept' => 'application/json',
-           'Content-Type' => 'application/json' }
+         'Accept' => 'application/json',
+         'Content-Type' => 'application/json'
 
     assert_equal 422, response.status
   end
