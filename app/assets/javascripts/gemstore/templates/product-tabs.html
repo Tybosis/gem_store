@@ -28,10 +28,12 @@
 
   <form name="editProduct" ng-submit="edit(product, tab)" ng-show="tab.isSet(4)"><h2>Edit Product</h2><br>
     <label for="name">Name:<br>
-      <input type="text" name="name" ng-model="product.name" >
-    </label><br>
+      <input type="text" name="name" required ng-minlength=5 ng-model="product.name" ng-model-options="{debounce: 1000}" >
+      <span ng-show="editProduct.name.$error.minlength">Name must be at least five characters!</span>
+    </label><br \>
     <label for="price">Price:<br>
-      <input type="text" name="price" ng-model="product.price" >
+      <input type="number" required name="price" ng-model="product.price">
+      <span ng-show="editProduct.price.$error.number">Please enter a number!</span>
     </label><br>
     <label for="description">Description:<br>
       <input type="text" name="description" ng-model="product.description">
