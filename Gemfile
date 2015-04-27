@@ -18,6 +18,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'web-console', '~> 2.0'
   gem 'pry'
+  gem 'rubocop', require: false
 end
 
 group :production do
