@@ -13,7 +13,7 @@ Then, I followed these steps to get the angular app to be rendered properly
 through the rails asset pipeline.
 
 1. create a new rails app ('rails new ...')
-2. include angular and any other dependencies (I used [bower](bower.io) for this)
+2. include angular and any other dependencies (I used [bower](http://bower.io) for this)
 3. load in the files for your angular app (checkout the app/assets/javascripts subdirectory to see where I added these files).  Your main angular app javascript file should be in the javascripts file along with the rails application.js, but other js files should be in the angular app folder, inside app/assets/javascripts.
 4. Make sure you are requiring the right files in both your application.js file and your angular app's main js file.  (//= require ...)
 5. Make sure your view have the right angular markup.  Either your angular index.html or the index.html in your root path should have the ng-app tag
@@ -23,4 +23,4 @@ through the rails asset pipeline.
 And voila!  A new app with an angular front-end and a rails back-end!
 
 
-To see this app in action go [here.](tylers-gemstore.herokuapp.com)
+To see this app in action go [here.](http://tylers-gemstore.herokuapp.com)
