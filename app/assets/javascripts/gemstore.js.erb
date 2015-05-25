@@ -4,14 +4,65 @@
 (function() {
 
   var app = angular.module('gemStore', ['store-directives']);
+  $show = false;
 
-  app.controller('StoreController', ['$http', function($http){
-    var store = this;
-    store.products = [];
+  app.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token').attr('content');
+  }]);
 
-    $http.get('/store-products.json').success(function(data){
-      store.products = data;
-    });
+  app.controller('StoreController', ['$http', '$scope', function($http, $scope){
+    $scope.products = [];
+    $scope.product = {};
+
+    $scope.index = function() {
+      $http.get('/api/products')
+        .success(function(data) {
+          $scope.products = data.reverse();
+        })
+        .error(function(data, status) {
+          console.log(status);
+          $scope.errors.push(status);
+        });
+    };
+
+    $scope.create = function() {
+      $http.post('/api/products', $scope.product)
+        .success(function(data) {
+          $scope.products.unshift(data);
+          $scope.product = {};
+          $scope.show = false;
+        })
+        .error(function(data, status) {
+          console.log(status);
+          $scope.errors.push(status);
+        });
+    };
+
+    $scope.delete = function(product) {
+      $http.delete("/api/products/" + product.id)
+        .success(function() {
+          if(confirm("Are you sure you want to delete this gem?")) {
+            var index = $scope.products.map(function(e) { return e.id; }).indexOf(product.id);
+            $scope.products.splice(index, 1);
+          };
+        })
+        .error(function(data, status) {
+          console.log(status);
+          $scope.errors.push(status);
+        });
+    };
+
+    $scope.edit = function(product, tab) {
+      $http.patch("/api/products/" + product.id, product)
+        .success(function(data) {
+          tab.setTab(1);
+        })
+        .error(function(data, status) {
+          console.log(status);
+          $scope.errors.push(status);
+        });
+    }
+
   }]);
 
   app.controller('ReviewController', function() {
