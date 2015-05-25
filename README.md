@@ -23,4 +23,4 @@ through the rails asset pipeline.
 And voila!  A new app with an angular front-end and a rails back-end!
 
 
-To see this app in action go [here.](tyler-gemstore.herokuapp.com)
+To see this app in action go [here.](tylers-gemstore.herokuapp.com)
