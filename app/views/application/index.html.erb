@@ -1,11 +1,19 @@
-<body ng-app="gemStore" ng-controller="StoreController as store">
+<body ng-app="gemStore" ng-controller="StoreController as store" ng-init="index()">
   <div class="container"><!--  Store Header  -->
     <header>
       <h1 class="text-center">Flatlander Crafted Gems</h1>
       <h2 class="text-center">– an Angular store –</h2>
+      <div class="text-center">
+        <a class="btn btn-primary btn-lg" href="#" ng-click="show = !show">New Product</a>
+      </div>
+      <br \>
     </header>
-    <div class="list-group">
-      <div class="list-group-item" ng-repeat="product in store.products">
+    <div class="list-group-item">
+      <div class="container-fluid">
+        <product-new-form></product-new-form>
+      </div>
+      <br \>
+      <div class="list-group-item" ng-repeat="product in products">
         <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>
         <product-gallery></product-gallery>
         <product-tabs></product-tabs>

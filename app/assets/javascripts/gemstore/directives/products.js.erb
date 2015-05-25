@@ -8,6 +8,13 @@
     };
   });
 
+  app.directive("productNewForm", function() {
+    return {
+      restrict: 'E',
+      templateUrl: '<%= asset_path("gemstore/templates/product-new-form.html") %>'
+    };
+  });
+
   app.directive("productReviews", function() {
     return {
       restrict: 'E',
